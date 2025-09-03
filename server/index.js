@@ -9,7 +9,8 @@ import signup from './auth/signup.js'
 import login from './auth/login.js'
 import callback from './callback/callback.js'
 import {connect} from './database/db.js'
-import sendemail from './tools/sendmail.js'
+import sendmail from "./tools/sendmail.js"
+import send from './tools/send.js'
 try{
 const app=express()
 app.use(express.json())
@@ -38,7 +39,8 @@ app.use(cookieParser())
 app.use('/auth/signup',signup)
 app.use('/auth/callback/url',callback)
 app.use('/auth/login',login)
-app.use('/sendmail',sendemail)
+app.use('/sendreq',send)
+app.use('/req/send/email',sendmail)
 app.listen(process.env.PORT,()=>{
     console.log("Server has been started!")
     console.log("Port:", process.env.PORT || 4000)

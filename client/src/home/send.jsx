@@ -7,7 +7,7 @@ const Send = () => {
   useEffect(()=>{
    async function CheckAuth(){
     try{
-   const res=await axios.post("http://localhost:4000/sendmail",
+   const res=await axios.post("http://localhost:4000/sendreq",
  {},
   { withCredentials: true } )
    if(res.data.success){
