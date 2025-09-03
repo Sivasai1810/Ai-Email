@@ -20,7 +20,6 @@ router.post('',async(req,res)=>{
 const exist=await userModel.findOne({client_email:useremail})
 if(exist){
    const  playLoad={id:exist.client_id}
-   console.log(playLoad)
 const ac_Token=  jwt.sign(playLoad,jwtsecret,{expiresIn:'2d'})
 const re_Token= jwt.sign(playLoad,jwtsecret,{expiresIn:'7d'})
 res.cookie("ac_Token",ac_Token,{

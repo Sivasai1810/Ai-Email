@@ -18,7 +18,7 @@ router.get('',passport.authenticate('google',{
         await newuser.save()
         return res.json({message:"Account Created successfully",
             success:true,
-             redirectUrl: "http://localhost:4000/auth/page"
+             redirectUrl: "http://localhost:5173/auth/page"
         })
     }
     // If Google returned a new refresh token (after re-consent), update it
@@ -27,7 +27,9 @@ router.get('',passport.authenticate('google',{
         await exist.save()
         return res.json({
             message: "Account updated with new refresh token",
-            success: true
+            success: true,
+            redirectUrl: "http://localhost:5173/auth/page",
+            info:"Account is already exist"
         })
     }
     res.json({message:"Account already exist"})

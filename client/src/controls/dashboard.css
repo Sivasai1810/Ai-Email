@@ -1,0 +1,99 @@
+div {
+    /* #f9fbfd */
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 12px;
+  background:gray ;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Arial, sans-serif;
+  animation: fadeIn 0.8s ease-in-out;
+  position: relative;
+}
+
+div p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+div label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 18px;
+  margin-top: 9px;
+  border: 1.8px solid #d9d9d9;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.25s ease;
+  background: white;
+}
+
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #0078d7;
+  box-shadow: 0 0 8px rgba(0, 120, 215, 0.25);
+  transform: scale(1.01);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4cafef, #0078d7);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  float: right;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0078d7, #005bb5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 120, 215, 0.3);
+}
+
+button:active::after {
+  content: " ✈️ Sending...";
+  font-size: 14px;
+  margin-left: 8px;
+  animation: fly 0.8s ease forwards;
+}
+
+@keyframes fly {
+  0% { opacity: 0; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(8px) translateY(-3px); }
+  100% { opacity: 0; transform: translateX(20px) translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gettouch{
+    position: absolute;
+    left: 35rem;
+    top:29rem ;
+padding: 10px 10px;
+}

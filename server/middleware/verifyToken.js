@@ -3,6 +3,7 @@ dotenv.config()
 import jwt from 'jsonwebtoken'
 const jwtpassword=process.env.JWT_SECRET
 const verifyToken=async(req,res,next)=>{ 
+  // console.log(req.cookies["connect.sid"])
     try{
     const accessToken = req.cookies.ac_Token;
     const refreshToken = req.cookies.re_Token;

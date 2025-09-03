@@ -11,7 +11,6 @@ router.post('', verifyToken, GenToken, async (req, res) => {
 const Toemail=req.body.email
 const user_subject=req.body.subject
 const user_text=req.body.text
-
     const a_Token =req.accessToken
     const userid = req.user.id
     const exist = await userModel.findOne({ client_id: userid })
