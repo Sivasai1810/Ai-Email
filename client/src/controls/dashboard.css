@@ -1,99 +1,101 @@
-div {
-    /* #f9fbfd */
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 25px;
-  border-radius: 12px;
-  background:gray ;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  font-family: "Segoe UI", Arial, sans-serif;
-  animation: fadeIn 0.8s ease-in-out;
-  position: relative;
+*{box-sizing:border-box}
+.dashboard-container{
+  max-width:700px;margin:2rem auto;padding:2.5rem;border-radius:20px;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  position:relative;overflow:hidden
 }
-
-div p {
-  font-size: 20px;
-  font-weight: 600;
-  color: #444;
-  margin-bottom: 20px;
-  text-align: left;
+.dashboard-container::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.05) 100%);
+  backdrop-filter:blur(10px);border-radius:20px;z-index:0
 }
-
-div label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #666;
-  margin-bottom: 5px;
-  display: block;
+.dashboard-content{
+  position:relative;z-index:1;background:rgba(255,255,255,.95);
+  padding:2rem;border-radius:16px;backdrop-filter:blur(20px);
+  box-shadow:0 8px 32px rgba(0,0,0,.1)
 }
-
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 18px;
-  margin-top: 9px;
-  border: 1.8px solid #d9d9d9;
-  border-radius: 8px;
-  outline: none;
-  font-size: 15px;
-  transition: all 0.25s ease;
-  background: white;
+.welcome-title{
+  font-size:2.2rem;font-weight:700;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;margin-bottom:2rem;text-align:center;letter-spacing:-.02em
 }
-
-input[type="email"]:focus,
-textarea:focus {
-  border-color: #0078d7;
-  box-shadow: 0 0 8px rgba(0, 120, 215, 0.25);
-  transform: scale(1.01);
+.form-group{margin-bottom:1.5rem;position:relative}
+.form-label{
+  display:block;font-size:.9rem;font-weight:600;color:#4a5568;
+  margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em
 }
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
+.form-input,.form-textarea{
+  width:100%;padding:1rem 1.2rem;border:2px solid #e2e8f0;border-radius:12px;
+  font-size:1rem;font-family:inherit;background:#fff;outline:none;
+  transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 4px rgba(0,0,0,.02)
 }
-
-button {
-  display: inline-block;
-  padding: 12px 22px;
-  font-size: 15px;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #4cafef, #0078d7);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  float: right;
+.form-input:focus,.form-textarea:focus{
+  border-color:#667eea;box-shadow:0 0 0 3px rgba(102,126,234,.1);transform:translateY(-1px)
 }
-
-button:hover {
-  background: linear-gradient(135deg, #0078d7, #005bb5);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 120, 215, 0.3);
+.form-textarea{min-height:120px;resize:vertical}
+.ai-assistant{
+  position:absolute;right:12px;bottom:12px;cursor:pointer;border-radius:50%;
+  padding:4px;background:rgba(49,20,34,.3);box-shadow:0 4px 12px rgba(102,126,234,.3);
+  transition:.3s
 }
-
-button:active::after {
-  content: " ✈️ Sending...";
-  font-size: 14px;
-  margin-left: 8px;
-  animation: fly 0.8s ease forwards;
+.ai-assistant img{width:32px;height:32px;border-radius:50%}
+.ai-assistant:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(102,126,234,.4)}
+.confirm-button{
+  background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;
+  padding:1rem 2rem;font-size:1rem;font-weight:600;border-radius:12px;cursor:pointer;
+  transition:.3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 12px rgba(102,126,234,.3);
+  text-transform:uppercase;letter-spacing:.05em;width:100%;margin-top:1rem
 }
-
-@keyframes fly {
-  0% { opacity: 0; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(8px) translateY(-3px); }
-  100% { opacity: 0; transform: translateX(20px) translateY(-10px); }
+.confirm-button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(102,126,234,.4)}
+.confirm-button:active{transform:translateY(0);box-shadow:0 4px 12px rgba(102,126,234,.3)}
+.popup-container{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;
+  justify-content:center;z-index:1000;backdrop-filter:blur(5px);animation:fadeIn .3s ease
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.popup-box{
+  background:#fff;padding:2rem;border-radius:20px;max-width:500px;width:90%;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);animation:slideUp .3s ease;
+  position:relative;overflow:hidden
 }
-
-.gettouch{
-    position: absolute;
-    left: 35rem;
-    top:29rem ;
-padding: 10px 10px;
+.popup-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(135deg,#667eea,#764ba2)
 }
+.popup-title{
+  font-size:1.5rem;font-weight:700;color:#2d3748;margin-bottom:1.5rem;text-align:center
+}
+.popup-content{margin-bottom:2rem}
+.popup-field{
+  margin-bottom:1rem;padding:.75rem;background:#f7fafc;border-radius:8px;
+  border-left:4px solid #667eea
+}
+.popup-field-label{font-weight:600;color:#4a5568;font-size:.9rem;margin-bottom:.25rem}
+.popup-field-value{color:#2d3748;word-break:break-word}
+.popup-buttons{display:flex;gap:1rem;justify-content:center}
+.popup-btn{
+  padding:.75rem 1.5rem;border:none;border-radius:10px;font-weight:600;cursor:pointer;
+  transition:.3s;text-transform:uppercase;letter-spacing:.05em;font-size:.9rem
+}
+.edit-btn{background:#e2e8f0;color:#4a5568}
+.edit-btn:hover{background:#cbd5e0;transform:translateY(-1px)}
+.send-btn{
+  background:linear-gradient(135deg,#48bb78,#38a169);color:#fff;
+  box-shadow:0 4px 12px rgba(72,187,120,.3)
+}
+.send-btn:hover{
+  background:linear-gradient(135deg,#38a169,#2f855a);
+  transform:translateY(-1px);box-shadow:0 6px 20px rgba(72,187,120,.4)
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  .dashboard-container{margin:1rem;padding:1.5rem}
+  .dashboard-content{padding:1.5rem}
+  .welcome-title{font-size:1.8rem}
+  .ai-assistant{position:static;margin:1rem 0;text-align:center;transform:none}
+  .popup-buttons{flex-direction:column}
+  .popup-btn{width:100%}
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.loading{animation:pulse 1.5s ease-in-out infinite}

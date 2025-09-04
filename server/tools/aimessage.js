@@ -9,23 +9,29 @@ async function gentext(user_prompt) {
         messages:[
             {
                 role:'system',
-                content:'You are an assistant that improves  text. Your job is to correct spelling, grammar, and sentence structure while keeping the meaning the same. Do not change the tone, just make the text clear and professional.'
+                content:`You are a professional text improver.  
+Your task is to transform any text provided by the user into fluent, professional, and natural English.  
+- Correct grammar, spelling, and sentence structure.  
+- Improve sentence flow and clarity, making it read smoothly.  
+- Rewrite awkward or casual phrasing into polished, professional language.  
+- Preserve the original meaning, but make the text sound like it was written by a fluent, educated English speaker.  
+- Only return the improved text itself. Do not include explanations, reasoning, or <think> sections.  
+`
             },
             {
-                role:"user",
+                role:'user',
                 content:user_prompt
             }
         ],
-        model:"deepseek-r1-distill-llama-70b",
+        model:"gemma2-9b-it",
     })
     
- return response.choices[0].message.content
-
+ return response.choices[0].message
 }
 router.post('',async(req,res)=>{
 const user_prompt=req.body.text
 const result=await gentext(user_prompt)
-// console.log(result)
+console.log(result)
 res.json({
     message:result
 })
