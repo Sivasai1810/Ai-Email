@@ -31,7 +31,6 @@ Your task is to transform any text provided by the user into fluent, professiona
 router.post('',async(req,res)=>{
 const user_prompt=req.body.text
 const result=await gentext(user_prompt)
-console.log(result)
 res.json({
     message:result
 })
