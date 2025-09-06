@@ -12,6 +12,8 @@ import {connect} from './database/db.js'
 import sendmail from "./tools/sendmail.js"
 import send from './tools/send.js'
 import markup from './tools/aimessage.js'
+import fetchprofile from './tools/profile.js'
+import logout from "./auth/logout.js"
 try{
 const app=express()
 app.use(express.json())
@@ -43,6 +45,8 @@ app.use('/auth/login',login)
 app.use('/sendreq',send)
 app.use('/req/send/email',sendmail)
 app.use('/prompt/message',markup)
+app.use('/auth/profile',fetchprofile)
+app.use('/req/logout',logout)
 app.listen(process.env.PORT,()=>{
     console.log("Server has been started!")
     console.log("Port:", process.env.PORT || 4000)

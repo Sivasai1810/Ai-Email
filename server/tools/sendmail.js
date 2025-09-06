@@ -42,6 +42,7 @@ const user_text=req.body.text
 
     const result = await Transporter.sendMail(mailOptions)
     return res.json({
+      success:true,
       message: "Email sent successfully",
       info: result
     })
@@ -49,6 +50,7 @@ const user_text=req.body.text
   } catch (err) {
     console.error("Error sending email:", err)
     return res.status(500).json({
+      success:false,
       message: "Failed to send email",
       error: err.message
     })

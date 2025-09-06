@@ -32,8 +32,12 @@ const Dashboard = () => {
         { email, subject, text },
         { withCredentials: true }
       );
-      console.log(res.data.message);
-      console.log(res.data.info);
+      alert(res.data.message);
+    if(res.data.success==true){
+      setEmail("")
+      setText("")
+      setSubject("")
+    }
       setShowPopup(false); 
     } catch (err) {
       console.log("err", err);

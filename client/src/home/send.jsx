@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import Profile from '../controls/profile'
 const Send = () => {
   const navigate=useNavigate()
   const [IsAuthenticated,setIsAuthenticated]=useState(null)
@@ -34,6 +35,9 @@ const Send = () => {
   return (
     <div>
       <button onClick={handlesubmit}>send-email</button>
+      {IsAuthenticated && (
+      <Profile />
+      )}
     </div>
   )
 }
